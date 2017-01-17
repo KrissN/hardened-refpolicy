@@ -246,6 +246,7 @@ ifdef(`init_systemd',`
 	files_relabel_all_pids(init_t)
 	files_read_all_locks(init_t)
 	files_search_kernel_modules(init_t)
+	files_relabel_all_non_security_file_types(init_t)
 	# for privatetmp functions
 	files_manage_generic_tmp_dirs(init_t)
 	files_mounton_tmp(init_t)
