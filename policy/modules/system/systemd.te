@@ -39,6 +39,10 @@ init_system_domain(systemd_binfmt_t, systemd_binfmt_exec_t)
 type systemd_binfmt_unit_t;
 init_unit_file(systemd_binfmt_unit_t)
 
+type systemd_generator_gpt_t;
+type systemd_generator_gpt_exec_t;
+init_system_domain(systemd_generator_gpt_t, systemd_generator_gpt_exec_t)
+
 type systemd_cgroups_t;
 type systemd_cgroups_exec_t;
 domain_type(systemd_cgroups_t)
@@ -176,6 +180,18 @@ systemd_log_parse_environment(systemd_binfmt_t)
 files_read_etc_files(systemd_binfmt_t)
 
 fs_register_binary_executable_type(systemd_binfmt_t)
+
+#######################################
+#
+# GPT auto generator local policy
+#
+
+systemd_log_parse_environment(systemd_generator_gpt_t)
+
+storage_raw_read_fixed_disk(systemd_generator_gpt_t)
+dev_read_sysfs(systemd_generator_gpt_t)
+files_read_etc_files(systemd_generator_gpt_t)
+fs_getattr_xattr_fs(systemd_generator_gpt_t)
 
 ######################################
 #
