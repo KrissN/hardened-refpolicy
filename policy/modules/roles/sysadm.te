@@ -74,6 +74,11 @@ tunable_policy(`allow_ptrace',`
 	domain_ptrace_all_domains(sysadm_t)
 ')
 
+ifdef(`init_systemd',`
+	# Needed by systemctl
+	init_stream_connect(sysadm_t)
+')
+
 optional_policy(`
 	abrt_admin(sysadm_t, sysadm_r)
 ')
