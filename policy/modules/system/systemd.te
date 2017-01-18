@@ -361,6 +361,8 @@ dev_relabel_all_sysfs(systemd_tmpfiles_t)
 dev_read_urand(systemd_tmpfiles_t)
 dev_manage_all_dev_nodes(systemd_tmpfiles_t)
 
+tmpfiles_read_conf(systemd_tmpfiles_t)
+
 files_read_etc_files(systemd_tmpfiles_t)
 files_relabel_all_lock_dirs(systemd_tmpfiles_t)
 files_relabel_all_pid_dirs(systemd_tmpfiles_t)
