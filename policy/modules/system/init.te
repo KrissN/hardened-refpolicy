@@ -250,6 +250,9 @@ ifdef(`init_systemd',`
 	# for privatetmp functions
 	files_manage_generic_tmp_dirs(init_t)
 	files_mounton_tmp(init_t)
+	fs_mount_all_fs(init_t)
+	fs_remount_all_fs(init_t)
+	fs_unmount_all_fs(init_t)
 
 	fs_manage_cgroup_dirs(init_t)
 	fs_relabel_cgroup_dirs(init_t)
