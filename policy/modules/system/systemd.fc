@@ -19,6 +19,7 @@
 /usr/lib/systemd/systemd-machined	--	gen_context(system_u:object_r:systemd_machined_exec_t,s0)
 /usr/lib/systemd/systemd-resolved	--	gen_context(system_u:object_r:systemd_resolved_exec_t,s0)
 /usr/lib/systemd/systemd-user-sessions	--	gen_context(system_u:object_r:systemd_sessions_exec_t,s0)
+/usr/lib/systemd/systemd-networkd	--	gen_context(system_u:object_r:systemd_networkd_exec_t,s0)
 
 # Systemd generators
 /usr/lib/systemd/system-generators/systemd-gpt-auto-generator	    --	    gen_context(system_u:object_r:systemd_generator_gpt_exec_t,s0)
