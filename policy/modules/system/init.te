@@ -262,6 +262,7 @@ ifdef(`init_systemd',`
 	fs_manage_hugetlbfs_dirs(init_t)
 	fs_getattr_tmpfs(init_t)
 	fs_read_tmpfs_files(init_t)
+	fs_read_tmpfs_symlinks(init_t)
 	fs_read_cgroup_files(init_t)
 	fs_dontaudit_getattr_xattr_fs(init_t)
 	# for privatetmp functions
