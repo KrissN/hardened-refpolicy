@@ -196,6 +196,7 @@ storage_raw_read_fixed_disk(systemd_generator_gpt_t)
 dev_read_sysfs(systemd_generator_gpt_t)
 files_read_etc_files(systemd_generator_gpt_t)
 fs_getattr_xattr_fs(systemd_generator_gpt_t)
+kernel_dontaudit_use_fds(systemd_generator_gpt_t)
 
 ######################################
 #

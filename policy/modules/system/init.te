@@ -430,6 +430,7 @@ kernel_dontaudit_getattr_message_if(initrc_t)
 # cjp: not sure why these are here; should use mount policy
 kernel_list_unlabeled(initrc_t)
 kernel_mounton_unlabeled_dirs(initrc_t)
+kernel_dontaudit_use_fds(initrc_t)
 
 files_create_lock_dirs(initrc_t)
 files_pid_filetrans_lock_dir(initrc_t, "lock")
