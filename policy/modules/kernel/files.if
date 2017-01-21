@@ -7161,3 +7161,24 @@ interface(`files_relabel_all_pidfiles',`
 	relabel_files_pattern($1, pidfile, pidfile)
 	relabel_lnk_files_pattern($1, pidfile, pidfile)
 ')
+
+#########################################
+## <summary>
+##	Allow creating PID files.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`files_create_pid_files',`
+	gen_require(`
+		type var_t, var_run_t;
+	')
+
+	allow $1 var_t:dir search_dir_perms;
+	allow $1 var_run_t:lnk_file read_lnk_file_perms;
+	create_files_pattern($1, var_run_t, var_run_t)
+')
+

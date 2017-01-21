@@ -5178,3 +5178,22 @@ interface(`fs_cgroup_filetrans',`
 	allow $2 tmpfs_t:filesystem associate;
 	filetrans_pattern($1, cgroup_t, $2, $3, $4)
 ')
+
+########################################
+## <summary>
+##	Relabel from tmpfs directories.
+## </summary>
+## <param name="type">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`fs_relabelfrom_tmpfs_dirs',`
+	gen_require(`
+		type tmpfs_t;
+	')
+
+	allow $1 tmpfs_t:dir relabelfrom;
+')
+

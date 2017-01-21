@@ -187,3 +187,23 @@ interface(`lvm_admin',`
 	files_search_tmp($1)
 	admin_pattern($1, lvm_tmp_t)
 ')
+
+########################################
+## <summary>
+##	Create LVM runtime files
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+## <rolecap/>
+#
+interface(`lvm_create_runtime_dirs',`
+	gen_require(`
+		type lvm_var_run_t;
+	')
+
+	create_dirs_pattern($1, lvm_var_run_t, lvm_var_run_t)
+')
+

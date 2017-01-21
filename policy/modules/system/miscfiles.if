@@ -840,3 +840,22 @@ interface(`miscfiles_manage_localization',`
 	manage_lnk_files_pattern($1, locale_t, locale_t)
 ')
 
+########################################
+## <summary>
+##	Get attributes of man cache directory.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`miscfiles_getattr_man_cache',`
+	gen_require(`
+		type man_cache_t;
+	')
+
+	allow $1 { man_cache_t }:dir getattr;
+')
+
+
