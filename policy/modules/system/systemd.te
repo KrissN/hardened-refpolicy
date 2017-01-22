@@ -253,8 +253,8 @@ optional_policy(`
 # Logind local policy
 #
 
-allow systemd_logind_t self:capability { fowner sys_tty_config chown dac_override };
-allow systemd_logind_t self:process getcap;
+allow systemd_logind_t self:capability { fowner sys_tty_config chown dac_override sys_admin };
+allow systemd_logind_t self:process { getcap setfscreate };
 allow systemd_logind_t self:netlink_kobject_uevent_socket create_socket_perms;
 allow systemd_logind_t self:unix_dgram_socket create_socket_perms;
 allow systemd_logind_t self:fifo_file rw_fifo_file_perms;
@@ -282,6 +282,12 @@ files_read_etc_files(systemd_logind_t)
 fs_read_efivarfs_files(systemd_logind_t)
 
 fs_getattr_tmpfs(systemd_logind_t)
+fs_getattr_tmpfs_dirs(systemd_logind_t)
+fs_list_cgroup_dirs(systemd_logind_t)
+fs_read_cgroup_files(systemd_logind_t)
+fs_mount_tmpfs(systemd_logind_t)
+fs_unmount_tmpfs(systemd_logind_t)
+fs_relabelfrom_tmpfs_dirs(systemd_logind_t)
 
 storage_getattr_removable_dev(systemd_logind_t)
 storage_setattr_removable_dev(systemd_logind_t)
@@ -293,8 +299,12 @@ term_use_unallocated_ttys(systemd_logind_t)
 init_get_all_units_status(systemd_logind_t)
 init_start_all_units(systemd_logind_t)
 init_stop_all_units(systemd_logind_t)
+init_start(systemd_logind_t)
+init_stop(systemd_logind_t)
 init_service_status(systemd_logind_t)
 init_service_start(systemd_logind_t)
+init_dgram_send(systemd_logind_t)
+init_get_system_status(systemd_logind_t)
 
 locallogin_read_state(systemd_logind_t)
 
@@ -303,8 +313,20 @@ systemd_start_power_units(systemd_logind_t)
 
 udev_read_db(systemd_logind_t)
 udev_read_pid_files(systemd_logind_t)
+udev_read_pid_dirs(systemd_logind_t)
+
+domain_obj_id_change_exemption(systemd_logind_t)
 
 userdom_use_user_ttys(systemd_logind_t)
+userdom_manage_user_runtime_root_dirs(systemd_logind_t)
+userdom_manage_user_runtime_dirs(systemd_logind_t)
+userdom_mounton_user_runtime_dirs(systemd_logind_t)
+userdom_relabelto_user_runtime_dirs(systemd_logind_t)
+
+seutil_read_file_contexts(systemd_logind_t)
+seutil_read_config(systemd_logind_t)
+selinux_get_fs_mount(systemd_logind_t)
+selinux_validate_context(systemd_logind_t)
 
 optional_policy(`
 	dbus_system_bus_client(systemd_logind_t)

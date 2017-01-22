@@ -881,6 +881,42 @@ interface(`init_reload',`
 
 ########################################
 ## <summary>
+##	Start all systemd services (systemd).
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`init_start',`
+	gen_require(`
+		type init_t;
+	')
+
+	allow $1 init_t:system start;
+')
+
+########################################
+## <summary>
+##	Stop all systemd services (systemd).
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`init_stop',`
+	gen_require(`
+		type init_t;
+	')
+
+	allow $1 init_t:system stop;
+')
+
+########################################
+## <summary>
 ##	Reboot the system (systemd).
 ## </summary>
 ## <param name="domain">
@@ -2060,6 +2096,25 @@ interface(`init_search_run',`
 
 	files_search_pids($1)
 	allow $1 init_var_run_t:dir search_dir_perms;
+')
+
+######################################
+## <summary>
+##	Write to files in /run/systemd directory.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`init_write_run_files',`
+	gen_require(`
+		type init_var_run_t;
+	')
+
+	files_search_pids($1)
+	allow $1 init_var_run_t:file write_file_perms;
 ')
 
 ######################################
