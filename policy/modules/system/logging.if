@@ -545,6 +545,11 @@ interface(`logging_send_syslog_msg',`
 	allow $1 self:unix_dgram_socket create_socket_perms;
 	allow $1 self:unix_stream_socket create_socket_perms;
 
+	ifdef(`init_systemd',`
+		kernel_dgram_send($1)
+		allow $1 syslogd_t:fd use;
+	')
+
 	# If syslog is down, the glibc syslog() function
 	# will write to the console.
 	term_write_console($1)
