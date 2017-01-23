@@ -257,7 +257,7 @@ ifdef(`init_systemd',`
 
 	fs_manage_cgroup_dirs(init_t)
 	fs_relabel_cgroup_dirs(init_t)
-	fs_rw_cgroup_files(init_t)
+	fs_manage_cgroup_files(init_t)
 	fs_list_auto_mountpoints(init_t)
 	fs_mount_autofs(init_t)
 	fs_manage_hugetlbfs_dirs(init_t)
