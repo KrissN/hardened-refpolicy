@@ -223,6 +223,7 @@ ifdef(`init_systemd',`
 	kernel_read_vm_sysctls(init_t)
 	kernel_dgram_send(init_t)
 	kernel_stream_connect(init_t)
+	kernel_rw_stream_sockets(init_t)
 	kernel_getattr_proc(init_t)
 	kernel_read_fs_sysctls(init_t)
 
