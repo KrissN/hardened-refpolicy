@@ -2482,10 +2482,10 @@ interface(`init_script_readable_type',`
 #
 interface(`init_search_units',`
 	gen_require(`
-		type init_var_run_t, systemd_unit_t;
+		type systemd_runtime_unit_t, systemd_unit_t;
 	')
 
-	search_dirs_pattern($1, init_var_run_t, systemd_unit_t)
+	search_dirs_pattern($1, systemd_runtime_unit_t, systemd_unit_t)
 
 	# Units are in /etc/systemd/system, /usr/lib/systemd/system and /run/systemd
 	files_search_etc($1)

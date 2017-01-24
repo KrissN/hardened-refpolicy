@@ -94,6 +94,9 @@ files_pid_file(initrc_var_run_t)
 type systemd_unit_t;
 init_unit_file(systemd_unit_t)
 
+type systemd_runtime_unit_t;
+init_unit_file(systemd_runtime_unit_t)
+
 ifdef(`distro_gentoo',`
 	type rc_exec_t;
 	domain_entry_file(initrc_t, rc_exec_t)
@@ -212,10 +215,14 @@ ifdef(`init_systemd',`
 	manage_dirs_pattern(init_t, init_var_run_t, init_var_run_t)
 
 	manage_files_pattern(init_t, systemd_unit_t, systemdunit)
+	manage_files_pattern(init_t, systemd_runtime_unit_t, systemdunit)
 
 	manage_dirs_pattern(init_t, systemd_unit_t, systemd_unit_t)
 	manage_lnk_files_pattern(init_t, systemd_unit_t, systemd_unit_t)
 	allow init_t systemd_unit_t:dir relabel_dir_perms;
+	manage_dirs_pattern(init_t, systemd_runtime_unit_t, systemd_runtime_unit_t)
+	manage_lnk_files_pattern(init_t, systemd_runtime_unit_t, systemd_runtime_unit_t)
+	allow init_t systemd_runtime_unit_t:dir relabel_dir_perms;
 
 	kernel_dyntrans_to(init_t)
 	kernel_read_network_state(init_t)
@@ -753,6 +760,7 @@ ifdef(`init_systemd',`
 	files_pid_filetrans(initrc_t, initrc_var_run_t, dir_file_class_set)
 
 	create_dirs_pattern(initrc_t, systemd_unit_t, systemd_unit_t)
+	create_dirs_pattern(initrc_t, systemd_runtime_unit_t, systemd_runtime_unit_t)
 
 	manage_files_pattern(initrc_t, systemdunit, systemdunit)
 	manage_lnk_files_pattern(initrc_t, systemdunit, systemdunit)

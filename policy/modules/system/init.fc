@@ -58,6 +58,9 @@ ifdef(`distro_gentoo', `
 /run/random-seed	--	gen_context(system_u:object_r:initrc_var_run_t,s0)
 /run/setmixer_flag	--	gen_context(system_u:object_r:initrc_var_run_t,s0)
 /run/systemd(/.*)?		gen_context(system_u:object_r:init_var_run_t,s0)
+/run/systemd/system(/.*)?	gen_context(system_u:object_r:systemd_runtime_unit_t,s0)
+/run/systemd/transient(/.*)?	gen_context(system_u:object_r:systemd_runtime_unit_t,s0)
+/run/systemd/generator(/.*)?	gen_context(system_u:object_r:systemd_runtime_unit_t,s0)
 
 ifdef(`distro_debian',`
 /run/hotkey-setup	--	gen_context(system_u:object_r:initrc_var_run_t,s0)
