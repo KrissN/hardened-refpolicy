@@ -261,6 +261,8 @@ ifdef(`init_systemd',`
 	fs_mount_all_fs(init_t)
 	fs_remount_all_fs(init_t)
 	fs_unmount_all_fs(init_t)
+	# for containerized services setup
+	files_mounton_non_security(init_t)
 
 	fs_manage_cgroup_dirs(init_t)
 	fs_relabel_cgroup_dirs(init_t)
