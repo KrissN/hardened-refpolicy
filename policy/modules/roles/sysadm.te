@@ -78,6 +78,7 @@ ifdef(`init_systemd',`
 	# Needed by systemctl
 	init_stream_connect(sysadm_t)
 	init_get_generic_units_status(sysadm_t)
+	systemd_start_power_units(sysadm_t)
 ')
 
 optional_policy(`
