@@ -190,3 +190,23 @@ interface(`systemd_start_power_units',`
 
 	allow $1 power_unit_t:service start;
 ')
+
+######################################
+## <summary>
+##   Use inherited systemd
+##   logind file descriptors.
+## </summary>
+## <param name="domain">
+##   <summary>
+##     Domain allowed access.
+##   </summary>
+## </param>
+#
+interface(`systemd_create_networkd_socket',`
+	gen_require(`
+		type systemd_networkd_t;
+	')
+
+	allow $1 systemd_networkd_t:netlink_route_socket create_socket_perms;
+')
+
