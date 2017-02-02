@@ -581,6 +581,24 @@ interface(`ssh_dontaudit_rw_tcp_sockets',`
 
 ########################################
 ## <summary>
+##	Create ssh server TCP sockets.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`ssh_create_tcp_sockets',`
+	gen_require(`
+		type sshd_t;
+	')
+
+	allow $1 sshd_t:tcp_socket create_stream_socket_perms;
+')
+
+########################################
+## <summary>
 ##	Connect to SSH daemons over TCP sockets.  (Deprecated)
 ## </summary>
 ## <param name="domain">

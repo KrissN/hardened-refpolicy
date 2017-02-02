@@ -317,6 +317,10 @@ ifdef(`init_systemd',`
 		modutils_domtrans_insmod(init_t)
 		modutils_read_module_config(init_t)
 	')
+	optional_policy(`
+		# systemd SSH socket activation
+		ssh_create_tcp_sockets(init_t)
+	')
 ',`
 	tunable_policy(`init_upstart',`
 		corecmd_shell_domtrans(init_t, initrc_t)
