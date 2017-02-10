@@ -308,6 +308,7 @@ ifdef(`init_systemd',`
 		systemd_dbus_chat_logind(init_t)
 		# systemd-networkd.socket
 		systemd_create_networkd_socket(init_t)
+		systemd_create_coredump_socket(init_t)
 	')
 
 	optional_policy(`

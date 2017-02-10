@@ -209,3 +209,21 @@ interface(`systemd_create_networkd_socket',`
 	allow $1 systemd_networkd_t:netlink_route_socket create_socket_perms;
 ')
 
+########################################
+## <summary>
+## Allow specified domain to create coredumpd stream socket
+## </summary>
+## <param name="domain">
+## <summary>
+## Domain to not audit.
+## </summary>
+## </param>
+#
+interface(`systemd_create_coredump_socket',`
+	gen_require(`
+		type systemd_coredump_t;
+	')
+
+	allow $1 systemd_coredump_t:unix_stream_socket create_stream_socket_perms;
+')
+
