@@ -223,6 +223,7 @@ ifdef(`init_systemd',`
 	manage_dirs_pattern(init_t, systemd_runtime_unit_t, systemd_runtime_unit_t)
 	manage_lnk_files_pattern(init_t, systemd_runtime_unit_t, systemd_runtime_unit_t)
 	allow init_t systemd_runtime_unit_t:dir relabel_dir_perms;
+	allow init_t initrc_t:process share;
 
 	kernel_dyntrans_to(init_t)
 	kernel_read_network_state(init_t)
@@ -758,6 +759,8 @@ ifdef(`distro_suse',`
 ')
 
 ifdef(`init_systemd',`
+	allow initrc_t init_t:system { reboot halt };
+
 	manage_files_pattern(initrc_t, initrc_lock_t, initrc_lock_t)
 	files_lock_filetrans(initrc_t, initrc_lock_t, file)
 
