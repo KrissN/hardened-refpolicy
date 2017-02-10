@@ -193,8 +193,7 @@ interface(`systemd_start_power_units',`
 
 ######################################
 ## <summary>
-##   Use inherited systemd
-##   logind file descriptors.
+## Allow specified domain to create networkd netlink route socket.
 ## </summary>
 ## <param name="domain">
 ##   <summary>
